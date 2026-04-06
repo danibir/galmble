@@ -1,0 +1,7 @@
+{
+  "FolderOrderSettings":[],
+  "ResourceOrderSettings":[
+    {"name":"eng_background","order":1,"path":"objects/eng_background/eng_background.yy",},
+    {"name":"Sprite1","order":2,"path":"sprites/Sprite1/Sprite1.yy",},
+  ],
+}
