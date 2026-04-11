@@ -1,51 +1,101 @@
-count = 0
-	for (var _y = -2; _y < room_height / ydistance  + 2; _y++)
-	for (var _x = -2; _x < room_width / xdistance + 2; _x++)
+
+if enabled = true
+{
+
+	//draw_rectangle(frameXStart + frameXOffset + frameYOffset, frameYStart, frameXEnd + frameXOffset, frameYEnd + frameYOffset, true)
+	gpu_set_scissor(
+	frameXStart + frameXOffset, 
+	frameYStart + frameYOffset, 
+	frameXEnd - frameXStart, 
+	frameYEnd - frameYStart)
+	gpu_set_ztestenable(true)
+	gpu_set_zwriteenable(true)
+
+	count = 0
+	for (var _y = frameYStart / ydistance - overflow; _y < frameYEnd / ydistance + overflow; _y++)
+	for (var _x = frameXStart / xdistance - overflow; _x < frameXEnd / xdistance + overflow; _x++)
 	{
 		count++
-		var _m = shapeMatrix(
-			"rectangle",
-			c_orange,
-			backgroundItemAlpha,
-			count,
-		    xoffset + _x * xdistance,
-		    yoffset + _y * ydistance,
-		    0,
-		    0,
-		    0,
-		    backgroundItemRotation,
-		    backgroundItemXscale,
-		    backgroundItemYscale,
-		    1
-		)
-		var _mnext = _m
-		_mnext[? "x"] += xdistance
-		_mnext[? "y"] += ydistance
-		_mnext[? "id"]++
-		var _mprev = _m
-		_mprev[? "x"] -= xdistance
-		_mprev[? "y"] -= ydistance
-		_mprev[? "id"]--
-	
-		for (var i = 0; i < array_length(modifierList); i++){
-			_m = modifierList[i].apply(_m)
-			_mnext = modifierList[i].apply(_m)
-			_mprev = modifierList[i].apply(_m)
-		}
+		var _m = ds_map_create()
+		ds_map_copy(_m, shapeTemplate)
 		
-		//4 following sequences are inaccurate, fix or forbid
+		_m[? "id"] = count
+		_m[? "getSeed"](_m, count)
+		_m[? "position"].x = xdistance * _x + xoffset
+		_m[? "position"].y = ydistance * _y + yoffset
+		
+		var _mflat = ds_map_create()
+		ds_map_copy(_mflat, _m)
+		
+		_m[? "apply"](_m, modifierList)
+		
+		var xscrollwidth = ceil((frameXEnd - frameXStart) / xdistance + overflow * 2) * xdistance
+		var yscrollwidth = ceil((frameYEnd - frameYStart) / ydistance + overflow * 2) * ydistance
+		if _m[? "position"].x < frameXStart - xdistance * overflow 
+			while _m[? "position"].x < frameXStart - xdistance * overflow {
+				ds_map_empty(_m)
+				ds_map_copy(_m, _mflat)
+				_m[? "position"].x += xscrollwidth
+				_m[? "apply"](_m, modifierList)
+			}
+		else if _m[? "position"].x > frameXEnd + xdistance * overflow
+			while _m[? "position"].x > frameXEnd + xdistance * overflow {
+				ds_map_empty(_m)
+				ds_map_copy(_m, _mflat)
+				_m[? "position"].x -= xscrollwidth
+				_m[? "apply"](_m, modifierList)
+			}
+		
+		if _m[? "position"].y < frameYStart - ydistance * overflow
+			while _m[? "position"].y < frameYStart - ydistance * overflow {
+				ds_map_empty(_m)
+				ds_map_copy(_m, _mflat)
+				_m[? "position"].y += yscrollwidth
+				_m[? "apply"](_m, modifierList)
+			}
+		else if _m[? "position"].y > frameYEnd + ydistance * overflow 
+			while _m[? "position"].y > frameYEnd + ydistance * overflow {
+				ds_map_empty(_m)
+				ds_map_copy(_m, _mflat)
+				_m[? "position"].y -= yscrollwidth
+				_m[? "apply"](_m, modifierList)
+			}
+		
+		ds_map_destroy(_mflat)
+		
+		var _shape = _m[? "shape"]
+		var _size = _m[? "size"]
+		var _position = _m[? "position"]
+		var _rotation = _m[? "rotation"]
+		var _scale = _m[? "scale"]
+		
 		var matrix = matrix_build(
-		_m[? "x"], _m[? "y"], _m[? "z"], 
-		_m[? "xrotation"], _m[? "yrotation"], _m[? "zrotation"], 
-		_m[? "xscale"] / 2, _m[? "yscale"] / 2, _m[? "zscale"] / 2
+		_position.x + frameXOffset, _position.y + frameYOffset, _position.z, 
+		_rotation.x, _rotation.y, _rotation.z, 
+		_scale.x / 2, _scale.y / 2, _scale.z / 2
 		)
 		matrix_set(matrix_world, matrix)
-		draw_set_color(_m[? "color"])
-		draw_set_alpha(_m[? "alpha"])
-		draw_rectangle(-0.5, -0.5, 0.5, 0.5, false)//other options
 		
+		draw_set_color(_shape.color)
+		draw_set_alpha(_shape.alpha)
+		
+		if (asset_get_type(_shape.texture) == asset_sprite) {
+			draw_sprite_ext(_shape.texture, _shape.index, 0, 0, _size.x, _size.y, 0, _shape.color, _shape.alpha)
+		}
+		else switch (_shape.texture) {
+			case "rectangle":
+			draw_rectangle(-_size.x / 2, -_size.y / 2, _size.x / 2, _size.y / 2, false)
+			break
+			case "ellipse":
+			draw_ellipse(-_size.x / 2, -_size.y / 2, _size.x / 2, _size.y / 2, false)
+			break
+		}
 		
 		ds_map_destroy(_m)
 	}
+	matrix_set(matrix_world, matrix_build_identity())
 
-matrix_set(matrix_world, matrix_build_identity())
+	gpu_set_scissor(0, 0, display_get_width(), display_get_height())
+	gpu_set_ztestenable(false)
+	gpu_set_zwriteenable(false)
+}

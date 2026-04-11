@@ -1,17 +1,16 @@
 xoffset += xscrollspeed
-if xoffset >= 0 {
-	xoffset -= xdistance
+if xoffset >= frameXEnd {
+	xoffset = frameXStart
 }
-if xoffset < -xdistance {
-	xoffset += xdistance
+if xoffset < frameXStart {
+	xoffset = frameXEnd
 }
 
 yoffset += yscrollspeed
-if yoffset >= 0 {
-	yoffset -= ydistance
+if yoffset >= frameYEnd {
+	yoffset = frameYStart
 }	
-if yoffset < -yoffset {
-	yoffset += ydistance
+if yoffset < frameYStart {
+	yoffset = frameYEnd
 }
-	
-backgroundItemRotation -= 2
+
