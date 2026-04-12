@@ -4,10 +4,13 @@
     {"name":"FUNC-SPRITES","order":2,"path":"folders/Sprites/FUNC-SPRITES.yy",},
   ],
   "ResourceOrderSettings":[
-    {"name":"eng_background","order":1,"path":"objects/eng_background/eng_background.yy",},
+    {"name":"eng_simple_backg","order":8,"path":"objects/eng_simple_backg/eng_simple_backg.yy",},
     {"name":"eng_startup","order":6,"path":"objects/eng_startup/eng_startup.yy",},
+    {"name":"ves_background","order":1,"path":"objects/ves_background/ves_background.yy",},
     {"name":"math","order":7,"path":"scripts/math/math.yy",},
+    {"name":"spr_coin","order":4,"path":"sprites/spr_coin/spr_coin.yy",},
     {"name":"spr_Curtain","order":3,"path":"sprites/spr_Curtain/spr_Curtain.yy",},
-    {"name":"spr_VES","order":1,"path":"sprites/spr_VES/spr_VES.yy",},
+    {"name":"spr_visualEffectSystem","order":1,"path":"sprites/spr_visualEffectSystem/spr_visualEffectSystem.yy",},
+    {"name":"Sprite5","order":5,"path":"sprites/Sprite5/Sprite5.yy",},
   ],
 }

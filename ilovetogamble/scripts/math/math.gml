@@ -1,13 +1,15 @@
 function sqr_n(n, i) {
-	for (var a = 0; a < i; a++) {
-		n = sqr(n)
+	var oldn = n
+	for (var a = 1; a < i; a++) {
+		n = n * oldn
 	}
 	return n
 }
 
 function sqrt_n(n, i) {
-	for (var a = 0; a < i; a++) {
-		n = sqrt(n)
+	var oldn = n
+	for (var a = 1; a < i; a++) {
+		n = n * oldn
 	}
 	return n
 }

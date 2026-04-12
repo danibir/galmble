@@ -1,12 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"eng_startup",
+  "%Name":"ves_background",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"eng_startup",
+  "name":"ves_background",
   "overriddenProperties":[],
   "parent":{
     "name":"ilovetogamble",
@@ -31,9 +32,9 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_engine",
-    "path":"sprites/spr_engine/spr_engine.yy",
+    "name":"spr_visualEffectSystem",
+    "path":"sprites/spr_visualEffectSystem/spr_visualEffectSystem.yy",
   },
   "spriteMaskId":null,
-  "visible":false,
+  "visible":true,
 }
