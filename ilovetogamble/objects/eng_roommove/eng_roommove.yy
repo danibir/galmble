@@ -1,18 +1,20 @@
 {
   "$GMObject":"",
-  "%Name":"eng_simple_backg",
+  "%Name":"eng_roommove",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"eng_simple_backg",
+  "name":"eng_roommove",
   "overriddenProperties":[],
   "parent":{
     "name":"ilovetogamble",
     "path":"ilovetogamble.yyp",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"eng_room",
+    "path":"objects/eng_room/eng_room.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -31,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_runPack",
-    "path":"sprites/spr_runPack/spr_runPack.yy",
+    "name":"spr_engine",
+    "path":"sprites/spr_engine/spr_engine.yy",
   },
   "spriteMaskId":null,
   "visible":false,

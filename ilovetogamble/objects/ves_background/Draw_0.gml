@@ -2,12 +2,12 @@
 if enabled
 {
 
-	draw_rectangle(frameXStart + frameXOffset + frameYOffset, frameYStart, frameXEnd + frameXOffset, frameYEnd + frameYOffset, true)
-	//gpu_set_scissor(
-	//frameXStart + frameXOffset, 
-	//frameYStart + frameYOffset, 
-	//frameXEnd - frameXStart, 
-	//frameYEnd - frameYStart)
+	//draw_rectangle(frameXStart + frameXOffset + frameYOffset, frameYStart, frameXEnd + frameXOffset, frameYEnd + frameYOffset, true)
+	gpu_set_scissor(
+	frameXStart + frameXOffset, 
+	frameYStart + frameYOffset, 
+	frameXEnd - frameXStart, 
+	frameYEnd - frameYStart)
 	gpu_set_ztestenable(true)
 	gpu_set_zwriteenable(true)
 

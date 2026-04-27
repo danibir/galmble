@@ -1,6 +1,8 @@
 xoffset += xscrollspeed
 yoffset += yscrollspeed
 
+overflowresetx = ceil((frameXEnd - frameXStart) / xdistance + overflow * 2) * xdistance
+overflowresety = ceil((frameYEnd - frameYStart) / ydistance + overflow * 2) * ydistance
 
 if xoffset >= frameXEnd {
 	xoffset -= overflowresetx

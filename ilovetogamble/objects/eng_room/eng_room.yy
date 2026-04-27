@@ -1,12 +1,12 @@
 {
   "$GMObject":"",
-  "%Name":"eng_simple_backg",
+  "%Name":"eng_room",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":2,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"eng_simple_backg",
+  "name":"eng_room",
   "overriddenProperties":[],
   "parent":{
     "name":"ilovetogamble",
@@ -31,9 +31,9 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_runPack",
-    "path":"sprites/spr_runPack/spr_runPack.yy",
+    "name":"spr_engine",
+    "path":"sprites/spr_engine/spr_engine.yy",
   },
   "spriteMaskId":null,
-  "visible":false,
+  "visible":true,
 }

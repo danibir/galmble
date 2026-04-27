@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_room",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_room",
+  "parent":{
+    "name":"ilovetogamble",
+    "path":"ilovetogamble.yyp",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

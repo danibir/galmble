@@ -7,8 +7,8 @@ frameXStart = room_width * 0
 frameXEnd = room_width * 1
 frameYStart = room_height * 0
 frameYEnd = room_height * 1
-xdistance = 96
-ydistance = 96
+xdistance = 48
+ydistance = 48
 xscrollspeed = 0
 yscrollspeed = 0
 xoffset = 0
@@ -20,7 +20,7 @@ seedList = []
 shapeTemplate = new shapeMatrix(
 "rectangle", 0, c_white, 1, NaN, 
 frameXStart + xoffset, frameYStart + yoffset, 0, 
-96, 96, 1, 
+48, 48, 1, 
 0, 0, 0, 
 1, 1, 1)
 
